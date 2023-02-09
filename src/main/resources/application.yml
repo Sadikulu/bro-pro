@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-cficsm9gp3jh03j2nhng-a.oregon-postgres.render.com:5432/database_realestate_db_ix3n
+    username: database_realestate_db_ix3n_user
+    password: oQtTIG9JskFBbxvypNq0AlMQhqPjoigt
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      "[hibernate.format_sql]": true
+logging:
+  file:
+    name: log/realestate.log
+  pattern:
+    file: "%d %-5level [%thread] %logger:%msg%n"
+  level:
+    "[org.springframework.web]": WARN
+    "[org.hibernate]": INFO
+    "[org.realestate]": DEBUG
+management: #actuator
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+realestate:
+  app:
+    jwtSecret: realEstate@!23
+    jwtExpirationMs: 86400000
+info:
+  application:
+    name: "RealEstate Backend App"
+    description: "This is RealEstate Property Backend Project"
+    version: "@project.version@"
