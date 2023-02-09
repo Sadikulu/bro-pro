@@ -9,7 +9,7 @@ RUN mvn clean package -DskipTests
 # Package stage
 #
 FROM openjdk:11-jdk-slim
-COPY --from=build /target/realestate-0.0.1-SNAPSHOT realestate.jar
+COPY --from=build /target/realestate-0.0.1-SNAPSHOT.jar realestate.jar
 # ENV PORT=8080
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","realestate.jar"]
