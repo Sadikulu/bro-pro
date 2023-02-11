@@ -1,4 +1,4 @@
 FROM openjdk:11-jdk-slim
-ADD ./target/*.jar /src/target/realestate-0.0.1-SNAPSHOT.jar
-WORKDIR /src
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} realestate-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","realestate.jar"]
