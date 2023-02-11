@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:11-jdk-slim
-ADD ./target/*.jar /src/target/realestate-0.0.1-SNAPSHOT.jar
-WORKDIR /src
+COPY --from=build /target/realestate-0.0.1-SNAPSHOT.jar realestate.jar
+EXPOSE 8091
 ENTRYPOINT ["java","-jar","realestate.jar"]
