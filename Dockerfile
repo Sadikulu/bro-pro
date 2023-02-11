@@ -1,4 +1,4 @@
 FROM openjdk:11-jdk-slim
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} realestate.jar
+COPY --from=build /target/realestate-0.0.1-SNAPSHOT.jar realestate.jar
+EXPOSE 8091
 ENTRYPOINT ["java","-jar","realestate.jar"]
